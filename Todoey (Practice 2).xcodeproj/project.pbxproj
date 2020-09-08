@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2958E8B2507CD470004EB5F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2958E8A2507CD470004EB5F /* Category.swift */; };
+		C2958E8D2507CD560004EB5F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2958E8C2507CD560004EB5F /* Item.swift */; };
 		C2F002F725070F1800757B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F002F625070F1800757B57 /* AppDelegate.swift */; };
 		C2F002F925070F1800757B57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F002F825070F1800757B57 /* SceneDelegate.swift */; };
 		C2F002FE25070F1800757B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F002FC25070F1800757B57 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		2EB7049F519234A555C991B4 /* Pods_Todoey__Practice_2_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoey__Practice_2_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		490BEBDA660B96E2CCF54286 /* Pods-Todoey (Practice 2).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey (Practice 2).debug.xcconfig"; path = "Target Support Files/Pods-Todoey (Practice 2)/Pods-Todoey (Practice 2).debug.xcconfig"; sourceTree = "<group>"; };
 		B933191D1B9E7990CF961FB0 /* Pods-Todoey (Practice 2).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey (Practice 2).release.xcconfig"; path = "Target Support Files/Pods-Todoey (Practice 2)/Pods-Todoey (Practice 2).release.xcconfig"; sourceTree = "<group>"; };
+		C2958E8A2507CD470004EB5F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C2958E8C2507CD560004EB5F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C2F002F325070F1800757B57 /* Todoey (Practice 2).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todoey (Practice 2).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F002F625070F1800757B57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F002F825070F1800757B57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +54,6 @@
 				490BEBDA660B96E2CCF54286 /* Pods-Todoey (Practice 2).debug.xcconfig */,
 				B933191D1B9E7990CF961FB0 /* Pods-Todoey (Practice 2).release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -98,6 +101,8 @@
 		C2F0030A2507125800757B57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C2958E8A2507CD470004EB5F /* Category.swift */,
+				C2958E8C2507CD560004EB5F /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,8 +240,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F00310250713A800757B57 /* CategoryViewController.swift in Sources */,
+				C2958E8B2507CD470004EB5F /* Category.swift in Sources */,
 				C2F003122507155000757B57 /* ItemViewController.swift in Sources */,
 				C2F002F725070F1800757B57 /* AppDelegate.swift in Sources */,
+				C2958E8D2507CD560004EB5F /* Item.swift in Sources */,
 				C2F002F925070F1800757B57 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

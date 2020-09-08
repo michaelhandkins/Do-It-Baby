@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    let categories = [String]()
+    let categories = [Category]()
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,21 @@ class CategoryViewController: UITableViewController {
         let alert = UIAlertController(title: "Create List Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Create List", style: .default) { (action) in
+            
+            if let keyboardText = keyboard.text {
+                
+                let newCategory = Category()
+                newCategory.name = keyboardText
+                
+                do {
+                    try self.realm.write {
+                        self.realm.add(newCategory)
+                    }
+                } catch {
+                    print("Error while adding new Category to realm: \(error)")
+                }
+                
+            }
             
             
         }
