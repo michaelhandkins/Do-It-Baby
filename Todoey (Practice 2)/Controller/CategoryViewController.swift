@@ -87,5 +87,19 @@ class CategoryViewController: UITableViewController {
         
     }
     
+    //MARK: - Segue
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toItemsSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ItemViewController
+        
+        if let selectedCategory = tableView.indexPathForSelectedRow {
+            destination.currentCatgory = categories[selectedCategory.row]
+        }
+    }
+    
 
 }
