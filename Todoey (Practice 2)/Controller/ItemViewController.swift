@@ -11,13 +11,15 @@ import RealmSwift
 
 class ItemViewController: UITableViewController {
     
+    let realm = try! Realm()
+    
     var currentCatgory: Category?
     
     var items: Results<Item>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadItems()
     }
     
     //MARK: - Table View Data Source Methods
@@ -47,7 +49,18 @@ class ItemViewController: UITableViewController {
             if let todoName = keyboard.text {
                 let newTodo = Item()
                 newTodo.name = todoName
-                self.currentCatgory?.children.append(newTodo)
+                
+                do {
+                    try self.realm.write {
+                        self.realm.add(newTodo)
+                        self.currentCatgory?.children.append(newTodo)
+                    }
+                } catch {
+                    print("Error thrown when attempting to add new todo item to Realm: \(error)")
+                }
+                
+                self.tableView.reloadData()
+                
             } else {
                 print("No text was entered in order to create a todo")
             }
@@ -62,6 +75,10 @@ class ItemViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    func loadItems() {
+        items = realm.objects(Item.self)
     }
     
 

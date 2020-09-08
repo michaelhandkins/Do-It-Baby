@@ -17,7 +17,7 @@ class CategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadCategories()
     }
 
     //MARK: - Table View Data Sources
