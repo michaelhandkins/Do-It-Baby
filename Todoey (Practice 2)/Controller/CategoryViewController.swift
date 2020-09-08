@@ -11,7 +11,7 @@ import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    let categories = [Category]()
+    var categories: Results<Category>!
     
     let realm = try! Realm()
 
@@ -24,13 +24,15 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return categories.count
+        return categories?.count ?? 0
     }
 
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+        
+        cell.textLabel?.text = categories[indexPath.row].name
 
         return cell
         
@@ -57,6 +59,8 @@ class CategoryViewController: UITableViewController {
                     print("Error while adding new Category to realm: \(error)")
                 }
                 
+                self.loadCategories()
+                
             }
             
             
@@ -68,6 +72,18 @@ class CategoryViewController: UITableViewController {
             actionKeyboard.placeholder = "Type category list title here..."
             keyboard = actionKeyboard
         }
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: - Data Manipulation Methods
+    
+    func loadCategories() {
+        
+        categories = realm.objects(Category.self)
+        
+        tableView.reloadData()
         
     }
     
