@@ -1,0 +1,6 @@
+framework module Pods_Todoey__Practice_2_ {
+  umbrella header "Pods-Todoey (Practice 2)-umbrella.h"
+
+  export *
+  module * { export * }
+}
