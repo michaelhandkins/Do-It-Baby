@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class ItemViewController: UITableViewController {
     
@@ -27,19 +28,6 @@ class ItemViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return items?.count ?? 0
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
-
-        cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
-        
-        if let itemList = items {
-            cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none
-        }
-
-        return cell
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -103,8 +91,58 @@ class ItemViewController: UITableViewController {
         }
         
     }
-    
-    
-    
 
+}
+
+extension ItemViewController: SwipeTableViewCellDelegate {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           
+           let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! SwipeTableViewCell
+        
+           cell.delegate = self
+
+           cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
+           
+           if let itemList = items {
+               cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none
+           }
+
+           return cell
+       }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .right else { return nil }
+        
+        if let itemList = items {
+            
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+                
+                do {
+                    try self.realm.write {
+                        self.realm.delete(itemList[indexPath.row])
+                    }
+                    self.loadItems()
+                } catch {
+                    print("Error when trying to delete item from realm via SwipeCellKit: \(error)")
+                }
+            }
+
+            // customize the action appearance
+            deleteAction.image = UIImage(named: "delete")
+
+            return [deleteAction]
+            
+        } else {
+            return nil
+        }
+
+        
+        
+    }
+    
+    
+    
+    
 }
