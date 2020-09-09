@@ -20,6 +20,7 @@ class ItemViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 70
         loadItems()
     }
     
@@ -123,7 +124,6 @@ extension ItemViewController: SwipeTableViewCellDelegate {
                     try self.realm.write {
                         self.realm.delete(itemList[indexPath.row])
                     }
-                    self.loadItems()
                 } catch {
                     print("Error when trying to delete item from realm via SwipeCellKit: \(error)")
                 }
@@ -142,7 +142,11 @@ extension ItemViewController: SwipeTableViewCellDelegate {
         
     }
     
-    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive
+        return options
+    }
     
     
 }
