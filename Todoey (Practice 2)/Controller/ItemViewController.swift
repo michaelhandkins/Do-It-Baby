@@ -78,7 +78,7 @@ class ItemViewController: UITableViewController {
     }
     
     func loadItems() {
-        items = realm.objects(Item.self)
+        items = currentCatgory?.children.sorted(byKeyPath: "dateCreated", ascending: true)
     }
     
 
