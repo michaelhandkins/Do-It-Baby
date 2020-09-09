@@ -34,6 +34,10 @@ class ItemViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
 
         cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
+        
+        if let itemList = items {
+            cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none
+        }
 
         return cell
     }
@@ -77,9 +81,30 @@ class ItemViewController: UITableViewController {
         
     }
     
+    //MARK: - Data Manipulation Methods
+    
     func loadItems() {
         items = currentCatgory?.children.sorted(byKeyPath: "dateCreated", ascending: true)
+        tableView.reloadData()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let itemList = items {
+            do {
+                try realm.write {
+                    itemList[indexPath.row].done = !itemList[indexPath.row].done
+                }
+                loadItems()
+            } catch {
+                print("Error when selecting todo item to update its done status: \(error)")
+            }
+            
+        }
+        
+    }
+    
+    
     
 
 }
