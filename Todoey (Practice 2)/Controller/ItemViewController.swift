@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import ChameleonFramework
 
 class ItemViewController: UITableViewController {
     
@@ -99,18 +100,25 @@ extension ItemViewController: SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! SwipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! SwipeTableViewCell
         
-           cell.delegate = self
+        cell.delegate = self
 
-           cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
-           
-           if let itemList = items {
-               cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none
-           }
+        cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
+        
+        if items != nil {
+            cell.backgroundColor = ComplementaryFlatColorOf(currentCatgory!.color).lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(items!.count))
+        }
+        
+        cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
+        
+        if let itemList = items {
+            cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none
+        }
 
-           return cell
-       }
+        return cell
+    }
+    
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         

@@ -9,10 +9,11 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import ChameleonFramework
 
 class CategoryViewController: UITableViewController {
     
-    var categories: Results<Category>!
+    var categories: Results<Category>?
     
     let realm = try! Realm()
 
@@ -27,7 +28,7 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return categories?.count ?? 0
+        return categories?.count ?? 1
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -89,7 +90,7 @@ class CategoryViewController: UITableViewController {
         let destination = segue.destination as! ItemViewController
         
         if let selectedCategory = tableView.indexPathForSelectedRow {
-            destination.currentCatgory = categories[selectedCategory.row]
+            destination.currentCatgory = categories?[selectedCategory.row]
         }
     }
     
@@ -100,13 +101,19 @@ extension CategoryViewController: SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! SwipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! SwipeTableViewCell
         
-           cell.delegate = self
+        cell.delegate = self
 
-           cell.textLabel?.text = categories?[indexPath.row].name ?? "Create A Todo List Using The '+'"
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "Create A Todo List Using The '+'"
+        
+        if let cellColor = categories?[indexPath.row].color {
+            cell.backgroundColor = cellColor
+        }
+        
+        cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
 
-           return cell
+        return cell
        }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
