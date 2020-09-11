@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category View Controller-->
+        <!--Do It Baby-->
         <scene sceneID="anU-TH-8fc">
             <objects>
                 <tableViewController id="03l-le-E2d" customClass="CategoryViewController" customModule="Todoey__Practice_2_" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,7 +29,7 @@
                             <outlet property="delegate" destination="03l-le-E2d" id="L8d-9N-ETr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VOD-7N-WuQ">
+                    <navigationItem key="navigationItem" title="Do It Baby" id="VOD-7N-WuQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3qs-2I-tFT">
                             <connections>
                                 <action selector="addButtonPressed:" destination="03l-le-E2d" id="kNF-xO-8TK"/>
@@ -84,8 +84,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bNd-mT-EJc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iwh-s7-vWr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iwh-s7-vWr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

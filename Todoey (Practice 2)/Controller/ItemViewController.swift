@@ -23,6 +23,16 @@ class ItemViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 70
         loadItems()
+        self.title = currentCatgory?.name
+        
+        if let categoryColor = UIColor(hexString: currentCatgory!.color) {
+            
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(categoryColor, returnFlat: true)]
+            self.navigationController?.navigationBar.tintColor = ContrastColorOf(categoryColor, returnFlat: true)
+            self.navigationController?.navigationBar.backgroundColor = categoryColor
+            
+        }
+        
     }
     
     //MARK: - Table View Data Source Methods
@@ -110,6 +120,7 @@ extension ItemViewController: SwipeTableViewCellDelegate {
         if let color = categoryColor?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(items!.count)) {
             cell.backgroundColor = color
             cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
+            cell.tintColor = ContrastColorOf(color, returnFlat: true)
         }
         
         if let itemList = items {

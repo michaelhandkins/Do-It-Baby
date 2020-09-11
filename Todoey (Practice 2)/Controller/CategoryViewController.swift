@@ -19,7 +19,14 @@ class CategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 70
+        tableView.rowHeight = 100
+        
+        if let navabarColor = self.navigationController?.navigationBar.backgroundColor {
+            
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navabarColor, returnFlat: true)]
+            self.navigationController?.navigationBar.tintColor = ContrastColorOf(navabarColor, returnFlat: true)
+            
+        }
         
         loadCategories()
     }
