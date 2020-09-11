@@ -106,11 +106,11 @@ extension ItemViewController: SwipeTableViewCellDelegate {
 
         cell.textLabel?.text = items?[indexPath.row].name ?? "Add Todo Items Using The '+'"
         
-        if items != nil {
-            cell.backgroundColor = ComplementaryFlatColorOf(currentCatgory!.color).lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(items!.count))
+        let categoryColor = UIColor(hexString: self.currentCatgory!.color)
+        if let color = categoryColor?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(items!.count)) {
+            cell.backgroundColor = color
+            cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
         }
-        
-        cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
         
         if let itemList = items {
             cell.accessoryType = itemList[indexPath.row].done ? .checkmark : .none

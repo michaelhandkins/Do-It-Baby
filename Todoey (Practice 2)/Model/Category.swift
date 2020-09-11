@@ -12,7 +12,7 @@ import ChameleonFramework
 
 class Category: Object {
     @objc dynamic var name: String = ""
-    let color: UIColor = FlatSkyBlue()
+    @objc dynamic var color: String = UIColor.randomFlat().hexValue()
 
     let children = List<Item>()
 }

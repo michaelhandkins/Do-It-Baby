@@ -107,7 +107,7 @@ extension CategoryViewController: SwipeTableViewCellDelegate {
 
         cell.textLabel?.text = categories?[indexPath.row].name ?? "Create A Todo List Using The '+'"
         
-        if let cellColor = categories?[indexPath.row].color {
+        if let cellColor = UIColor(hexString: categories![indexPath.row].color) {
             cell.backgroundColor = cellColor
         }
         
