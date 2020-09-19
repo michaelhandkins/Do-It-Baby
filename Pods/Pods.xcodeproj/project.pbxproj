@@ -572,9 +572,9 @@
 		BF582178C9E376FD1365A53472D26F8C /* SwipeCellKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeCellKit.debug.xcconfig; sourceTree = "<group>"; };
 		C03B0B26D44C1931E59AF23EFDED5D8F /* system_configuration.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = system_configuration.cpp; path = Realm/ObjectStore/src/sync/impl/apple/system_configuration.cpp; sourceTree = "<group>"; };
 		C1BE5F42F657FCFEE16932CA608FC203 /* sync_manager.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_manager.cpp; path = Realm/ObjectStore/src/sync/sync_manager.cpp; sourceTree = "<group>"; };
-		C268221E25158F46003DC8C1 /* check_and_delete.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = check_and_delete.GIF; sourceTree = "<group>"; };
-		C268221F25158F47003DC8C1 /* create_todos.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = create_todos.GIF; sourceTree = "<group>"; };
-		C268222025158F48003DC8C1 /* create_lists.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = create_lists.GIF; sourceTree = "<group>"; };
+		C268221E25158F46003DC8C1 /* check_and_delete.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = check_and_delete.GIF; path = ../check_and_delete.GIF; sourceTree = "<group>"; };
+		C268221F25158F47003DC8C1 /* create_todos.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = create_todos.GIF; path = ../create_todos.GIF; sourceTree = "<group>"; };
+		C268222025158F48003DC8C1 /* create_lists.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = create_lists.GIF; path = ../create_lists.GIF; sourceTree = "<group>"; };
 		C3623266437FF300FD13DA04647D1026 /* RLMSwiftSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMSwiftSupport.m; path = Realm/RLMSwiftSupport.m; sourceTree = "<group>"; };
 		C4905D8BAA261E6934C8724D7CDF3E42 /* RLMManagedArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMManagedArray.mm; path = Realm/RLMManagedArray.mm; sourceTree = "<group>"; };
 		C4979DE6B689DE5D4F203132A42BD1A8 /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
@@ -1022,10 +1022,10 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				C268221E25158F46003DC8C1 /* check_and_delete.GIF */,
 				C268222025158F48003DC8C1 /* create_lists.GIF */,
 				C268221F25158F47003DC8C1 /* create_todos.GIF */,
-				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				14819703D41633BDAF2956E0595FF87E /* Frameworks */,
 				4F3498867E6BEAD51A869D5D72AE28C2 /* Pods */,
 				22D5C5414AC9B839D2622D5FB3CEEFC2 /* Products */,

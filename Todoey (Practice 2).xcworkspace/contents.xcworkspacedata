@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Pods/../check_and_delete.GIF">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/../create_lists.GIF">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/../create_todos.GIF">
+   </FileRef>
+   <FileRef
       location = "group:Todoey (Practice 2).xcodeproj">
    </FileRef>
    <FileRef
