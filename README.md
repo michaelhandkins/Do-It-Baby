@@ -12,7 +12,7 @@ An intentionally designed todo app that uses Realm to store and retrieve data.
 
 ## Interface
 
-![.](doc/create_lists.gif)
+![.](do-it-baby/create_lists.gif)
 
 Upon opening the app, users can create lists for their todo items by tapping the '+' in the upper right hand corner of the screen and then following the prompts in the pop up.
 
