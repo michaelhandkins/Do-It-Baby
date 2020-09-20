@@ -19,19 +19,22 @@ class ItemViewController: UITableViewController {
     
     var items: Results<Item>?
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let categoryColor = UIColor(hexString: currentCatgory!.color) {
+            
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(categoryColor, returnFlat: true), NSAttributedString.Key.font: UIFont(name: "Lobster-Regular", size: 42)!]
+            self.navigationController?.navigationBar.tintColor = ContrastColorOf(categoryColor, returnFlat: true)
+            self.navigationController?.navigationBar.backgroundColor = categoryColor
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 70
         loadItems()
         self.title = currentCatgory?.name
-        
-        if let categoryColor = UIColor(hexString: currentCatgory!.color) {
-            
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(categoryColor, returnFlat: true)]
-            self.navigationController?.navigationBar.tintColor = ContrastColorOf(categoryColor, returnFlat: true)
-            self.navigationController?.navigationBar.backgroundColor = categoryColor
-            
-        }
         
     }
     

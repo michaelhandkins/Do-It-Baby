@@ -21,6 +21,9 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 100
         
+        self.navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.font: UIFont(name: "Lobster-Regular", size: 42)!]
+        
         if let navabarColor = self.navigationController?.navigationBar.backgroundColor {
             
             self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navabarColor, returnFlat: true)]
