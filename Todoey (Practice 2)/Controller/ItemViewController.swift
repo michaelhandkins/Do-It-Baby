@@ -54,22 +54,25 @@ class ItemViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Todo", style: .default) { (action) in
             
             if let todoName = keyboard.text {
-                let newTodo = Item()
-                newTodo.name = todoName
-                
-                do {
-                    try self.realm.write {
-                        self.realm.add(newTodo)
-                        self.currentCatgory?.children.append(newTodo)
+                if todoName != "" {
+                    
+                    let newTodo = Item()
+                    newTodo.name = todoName
+                    
+                    do {
+                        try self.realm.write {
+                            self.realm.add(newTodo)
+                            self.currentCatgory?.children.append(newTodo)
+                        }
+                    } catch {
+                        print("Error thrown when attempting to add new todo item to Realm: \(error)")
                     }
-                } catch {
-                    print("Error thrown when attempting to add new todo item to Realm: \(error)")
+                    
+                    self.tableView.reloadData()
+                    
+                } else {
+                    print("No text was entered in order to create a todo")
                 }
-                
-                self.tableView.reloadData()
-                
-            } else {
-                print("No text was entered in order to create a todo")
             }
         }
         
@@ -80,7 +83,7 @@ class ItemViewController: UITableViewController {
             keyboard = alertTextField
         }
         
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
@@ -88,7 +91,7 @@ class ItemViewController: UITableViewController {
     
     func loadItems() {
         items = currentCatgory?.children.sorted(byKeyPath: "dateCreated", ascending: true)
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

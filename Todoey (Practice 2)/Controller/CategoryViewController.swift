@@ -51,18 +51,22 @@ class CategoryViewController: UITableViewController {
             
             if let keyboardText = keyboard.text {
                 
-                let newCategory = Category()
-                newCategory.name = keyboardText
-                
-                do {
-                    try self.realm.write {
-                        self.realm.add(newCategory)
+                if keyboardText != "" {
+                    
+                    let newCategory = Category()
+                    newCategory.name = keyboardText
+                    
+                    do {
+                        try self.realm.write {
+                            self.realm.add(newCategory)
+                        }
+                    } catch {
+                        print("Error while adding new Category to realm: \(error)")
                     }
-                } catch {
-                    print("Error while adding new Category to realm: \(error)")
+                    
+                    self.loadCategories()
+                    
                 }
-                
-                self.loadCategories()
                 
             }
             
@@ -72,7 +76,7 @@ class CategoryViewController: UITableViewController {
         alert.addAction(action)
         
         alert.addTextField { (actionKeyboard) in
-            actionKeyboard.placeholder = "Type category list title here..."
+            actionKeyboard.placeholder = "Type todo list title here..."
             keyboard = actionKeyboard
         }
         
